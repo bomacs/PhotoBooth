@@ -48,15 +48,26 @@
             {{-- Select option role type --}}
             <div class="mt-4">
                 <x-label for="role_id" :value="__('Registered as:')" />
-                <select name="role_id" id="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select name="role_id" id="role_id" class="block mt-1 w-full border-dgrey focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value=""selected disabled>Select Role..</option>
                     <option value="user">User</option>
                     <option value="photographer">Photographer</option>
                 </select>
             </div>
 
+            <!--terms and conditions-->
+            <div class="block mt-6">
+                <label for="policy" class="inline-flex items-center">
+                    <input id="policy" type="checkbox" name="policy" value="agree" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <span class="ml-2 text-sm text-gray-600">
+                        I accept the
+                        <a href="{{ route('policies') }}" class="text-sm text-blue-600 hover:underline">Terms and Conditions</a>
+                    </span>
+                </label>
+            </div>
+        
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="underline text-sm text-dgrey hover:text-lgrey" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

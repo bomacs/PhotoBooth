@@ -15,7 +15,14 @@
     </head>
     <body class="bg-lgrey font-sans antialiased">
         @include('layouts.homeNav')
-        <h1>{{session('message')}}</h1>
+        @if(Session::has('success'))
+            <div class="text-dred">
+                    {{ Session::get('success') }}
+                    @php
+                        Session::forget('success');
+                    @endphp
+            </div>
+        @endif
         @include('partials._hero')
         @include('partials.news')
         @include('partials.gallery')

@@ -25,16 +25,21 @@ Route::get('/', function () {
 
 // Auth route for all
 Route::group(['middleware'=>['auth']], function() {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings');
-    Route::get('/bookings/create', [BookingController::class, 'create'])->name('create_book');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('bookings', [BookingController::class, 'index'])->name('bookings');
+    Route::get('bookings/create', [BookingController::class, 'create'])->name('create_book');
   
 });
-Route::post('/bookings/store', [BookingController::class, 'store'])->middleware(['auth'])->name('storeBooking');
-Route::get('/myprofile', function () {
+Route::post('bookings/store', [BookingController::class, 'store'])->middleware(['auth'])->name('storeBooking');
+Route::get('myprofile', function () {
     return view('user.show', [
         'user' => auth()->user()
     ]);
 })->middleware(['auth'])->name('myprofile');
+
+// Terms and condition
+Route::get('policies', function() {
+    return view('policies.termsAndCondition');
+})->name('policies');
 
 require __DIR__.'/auth.php';
